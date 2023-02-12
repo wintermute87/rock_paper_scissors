@@ -62,10 +62,56 @@ function playRound(playerSelection, computerSelection)
             break;
     }
 }
+
+function game()
+{
+
+    let yourScore = 0;
+    let computerScore = 0;
+
+    for (let i = 1; i < 6; i++) 
+    {
+        let playerSelection;
+        do {
+            playerSelection = prompt("Enter paper, rock or scissors:");
+        } while (playerSelection.toLowerCase() != "rock" && playerSelection.toLowerCase() != "paper" && playerSelection.toLowerCase() != "scissors");
+        
+
+
+        let computerSelection = getComputerChoice();
+    
+        console.log(`********  Round ${i}  ********`)
+        console.log(`You played ${playerSelection}`);
+        console.log(`The computer played ${computerSelection}`);
+    
+        let result_round = playRound(playerSelection, computerSelection);
+        
+        console.log(result_round);
+        console.log(`******************************\n\n`)
+
+        if(result_round.startsWith("You win"))
+        {
+            yourScore ++;
+        }
+        else if(result_round.startsWith("You lose"))
+        {
+            computerScore ++;
+        }
+    }
+
+
+    if(yourScore>computerScore)
+        console.log(`Congratulations ! You won ${yourScore} rounds of the game`);
+    else if(yourScore<computerScore)
+        console.log(`Computer won. Unfortunately you won only ${yourScore} rounds of the game`);
+    else
+        console.log(`Tie. Both you and the computer won ${yourScore} rounds`)
    
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+}
+   
+
+game()
+
 
 
 
